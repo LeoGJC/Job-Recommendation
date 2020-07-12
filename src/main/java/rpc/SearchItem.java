@@ -14,7 +14,7 @@ import entity.Item;
 import external.GitHubClient;
 
 /**
- * Servlet implementation class SearchItem
+ * servlet implementation class SearchItem
  */
 public class SearchItem extends HttpServlet {
 	private static final long serialVersionUID = 1L;

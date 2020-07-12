@@ -78,7 +78,6 @@ public class GitHubClient {
 					.build();	
 			itemList.add(item);
 		}
-		
 		return itemList;
 	}
 	
