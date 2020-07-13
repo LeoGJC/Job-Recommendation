@@ -28,7 +28,6 @@ public class Item {
 		obj.put("url", url);
 		return obj;
 	}
-
 }
 
 
