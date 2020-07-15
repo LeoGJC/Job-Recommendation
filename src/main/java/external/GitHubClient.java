@@ -68,13 +68,13 @@ public class GitHubClient {
 	
 	private List<Item> getItemList(JSONArray array) {
 		List<Item> itemList = new ArrayList<>();
-List<String> descriptionList = new ArrayList<>();
+		List<String> descriptionList = new ArrayList<>();
 		
 		for (int i = 0; i < array.length(); i++) {
 			// We need to extract keywords from description since GitHub API
 			// doesn't return keywords.
 			String description = getStringFieldOrEmpty(array.getJSONObject(i), "description");
-			if (description.equals("") || description.equals("\n")) {
+			if (description.equals("") || description.equals("\n")) { // edge case
 				descriptionList.add(getStringFieldOrEmpty(array.getJSONObject(i), "title"));
 			} else {
 				descriptionList.add(description);
