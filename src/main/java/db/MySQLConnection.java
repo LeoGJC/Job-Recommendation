@@ -80,7 +80,7 @@ public class MySQLConnection {
 			statement.executeUpdate();
 			
 			sql = "INSERT IGNORE INTO keywords VALUES (?, ?)";
-                    statement = conn.prepareStatement(sql);
+            statement = conn.prepareStatement(sql);
 			statement.setString(1, item.getItemId());
 			for (String keyword : item.getKeywords()) {
 				statement.setString(2, keyword);
