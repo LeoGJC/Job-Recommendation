@@ -62,7 +62,7 @@ public class Login extends HttpServlet {
 			session.setAttribute("user_id", userId);
 			obj.put("status", "OK").put("user_id", userId).put("name", connection.getFullname(userId));
 		} else {
-			obj.put("status", "User Doesn't Exist");
+			obj.put("status", "Login failed, user id and passcode do not exist.");
 			response.setStatus(401);
 		}
 		connection.close();
