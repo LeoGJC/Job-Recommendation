@@ -14,7 +14,7 @@ public class MySQLConnection {
 
 	public MySQLConnection() {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(MySQLDBUtil.URL);
 
 		} catch (Exception e) {
@@ -31,6 +31,7 @@ public class MySQLConnection {
 			}
 		}
 	}
+	
 	public void setFavoriteItems(String userId, Item item) {
 		if (conn == null) {
 			System.err.println("DB connection failed");
@@ -114,6 +115,7 @@ public class MySQLConnection {
 
 		return favoriteItems;
 	}
+	
 	public Set<Item> getFavoriteItems(String userId) {
 		if (conn == null) {
 			System.err.println("DB connection failed");

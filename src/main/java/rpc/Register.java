@@ -25,7 +25,6 @@ public class Register extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
