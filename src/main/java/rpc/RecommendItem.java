@@ -2,6 +2,7 @@ package rpc;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import entity.Item;
+import recommendation.Recommendation;
 
 /**
  * Servlet implementation class RecommendItem
@@ -36,13 +40,19 @@ public class RecommendItem extends HttpServlet {
 			return;
 		}
 
-		response.setContentType("application/json");
-		PrintWriter writer = response.getWriter();
-		
+		String userId = request.getParameter("user_id");
+
+		double lat = Double.parseDouble(request.getParameter("lat"));
+		double lon = Double.parseDouble(request.getParameter("lon"));
+
+		Recommendation recommendation = new Recommendation();
+		List<Item> items = recommendation.recommendItems(userId, lat, lon);
 		JSONArray array = new JSONArray();
-		array.put(new JSONObject().put("name", "abcd").put("address", "San Francisco").put("time", "01/01/2017"));
-		array.put(new JSONObject().put("name", "1234").put("address", "San Jose").put("time", "01/01/2017"));
-		writer.print(array);
+		for (Item item : items) {
+			array.put(item.toJSONObject());
+		}
+		RpcHelper.writeJsonArray(response, array);	
+
 	}
 
 	/**
